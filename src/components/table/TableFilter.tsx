@@ -3,12 +3,12 @@ import Button from "../form/button/Button";
 import Input from "../form/input/Input";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-const TableFilter = ({ placeholder }) => {
+const TableFilter = ({ placeholder,search,setSearch }) => {
 	return (
 		<>
 			<div className="flex items-center justify-between flex-wrap gap-4 px-8 pt-8">
 				<div className="flex items-center">
-					<Input leftIcon={faSearch} placeholder={placeholder} />
+					<Input leftIcon={faSearch} value={search} placeholder={placeholder} onChange={(e)=>setSearch(e.target.value)} />
 				</div>
 				<div className="flex items-center gap-4">
 					<div>
