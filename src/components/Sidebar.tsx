@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { sidebarData } from "../../constants/data";
+import { sidebarData } from "../constants/data";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import Link from "next/link";

@@ -42,7 +42,7 @@ const CustomTable = ({ tableHeader, rowData }) => {
 					</tr>
 				</thead>
 				<tbody>
-					{rowData.length > 0 ? (
+					{rowData?.length > 0 ? (
 						rowData.map((row, idx) => {
 							const rowKey = Object.keys(row);
 							return (
