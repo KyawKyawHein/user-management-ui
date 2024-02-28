@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MenuDropdown from "../drawer/MenuDropdown";
 import Checkbox from "../form/input/Checkbox";
 import Image from "next/image";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import MenuDropdown from "../drawer/MenuDropdown";
 
 const CustomTable = ({ tableHeader, rowData }) => {
 	const [checked, setChecked] = useState(false);
@@ -54,9 +54,6 @@ const CustomTable = ({ tableHeader, rowData }) => {
 										<Checkbox
 											onChange={handleCheck}
 											value={idx + 1}
-											// id={index + 1}
-											// name={index + 1}
-											// checked={allChecked}
 										/>
 									</td>
 									{rowKey.map((key, idx) =>

@@ -24,7 +24,7 @@ const Select = ({ data, className, labelText, required, error }) => {
 					) : null}
 				</div>
 			) : null}
-			<div className={`w-72 ${className ? className : null}`}>
+			<div className={`w-[100px] ${className ? className : null}`}>
 				<Listbox value={selected} onChange={setSelected}>
 					<div className="relative mt-1">
 						<Listbox.Button className="relative w-full cursor-pointer text-gray-600 rounded-lg border border-gray-300 py-2 pl-3 pr-10 text-left sm:text-sm">

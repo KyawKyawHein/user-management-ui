@@ -23,8 +23,8 @@ const TablePagination = () => {
 	};
 	return (
 		<div className="flex items-center justify-between px-8">
-			<div className="w-24 rounded-md shadow-sm cursor-pointer">
-				<Select data={data} className="w-full text-center" />
+			<div className="w-17 rounded-md shadow-sm cursor-pointer">
+				<Select data={data} className=" text-center" />
 			</div>
 			<div className="flex items-center gap-1">
 				<Button
