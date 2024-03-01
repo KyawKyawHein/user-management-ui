@@ -5,21 +5,19 @@ import React, { useState } from "react";
 import CreateUserForm from "./component/CreateUserForm";
 import RolesAndPermissionForm from "./component/RolesAndPermissionForm";
 import MoreInformationForm from "./component/MoreInformationForm";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const CreatePage = () => {
-  const router = useRouter()
   return (
     <Layout>
       <div className="w-full h-full">
         <div className="my-2">
-          <Button
-          onClick={()=>router.push('/users')}
-            leftIcon={faArrowLeft}
+          <Link
+          href={'/users'}
             className="bg-transparent text-gray-400 hover:bg-gray-200"
           >
             Back
-          </Button>
+          </Link>
         </div>
         <CreateUserForm/>
         <RolesAndPermissionForm/>
