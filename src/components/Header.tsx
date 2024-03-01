@@ -31,16 +31,16 @@ const Header = ({ open, setOpen }) => {
             <Input placeholder="Search..." />
           </div>
           <div className="flex items-center">
-            <MenuDropdown icon={faLayerGroup}>
-							<div>Hello</div>
-						</MenuDropdown>
-						<Badge count={3} icon={faBell} />
-						<button className="w-[35px] h-[35px] flex items-center justify-center text-gray-500">
-							<FontAwesomeIcon
-								icon={faArrowRightFromBracket}
-								className="w-full h-full"
-							/>
-						</button>
+            <Dropdown icon={faLayerGroup}>
+              <div>Hello</div>
+            </Dropdown>
+            <Badge count={3} icon={faBell} />
+            <button className="w-[35px] h-[35px] flex items-center justify-center text-gray-500">
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="w-full h-full"
+              />
+            </button>
           </div>
         </div>
       </nav>
