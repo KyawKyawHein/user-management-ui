@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import CreateUserForm from "./component/CreateUserForm";
 import RolesAndPermissionForm from "./component/RolesAndPermissionForm";
 import MoreInformationForm from "./component/MoreInformationForm";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const index = () => {
   const router = useRouter()
