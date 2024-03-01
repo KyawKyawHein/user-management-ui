@@ -7,7 +7,7 @@ import RolesAndPermissionForm from "./component/RolesAndPermissionForm";
 import MoreInformationForm from "./component/MoreInformationForm";
 import { useRouter } from "next/navigation";
 
-const index = () => {
+const CreatePage = () => {
   const router = useRouter()
   return (
     <Layout>
@@ -29,4 +29,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default CreatePage;

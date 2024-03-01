@@ -7,7 +7,7 @@ import TablePagination from "@/components/table/TablePagination";
 import { UsersListInfos } from "@/constants/data";
 
 const tableHeader = ['USER','ROLE',"LAST LOGIN","TWO-STEP","JOINED DATE"]
-const index = () => {
+const HomePage = () => {
   const [search,setSearch] = useState('')
   const [filterList,setFilterList] = useState()
   useEffect(()=>{
@@ -40,4 +40,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default HomePage;
