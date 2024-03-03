@@ -1,9 +1,11 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Menu, Transition } from "@headlessui/react";
+import { useRouter } from "next/router";
 import React, { Fragment } from "react";
 
 const MenuDropdown = ({ className }) => {
+	const router = useRouter();
 	return (
 		<div className={`${className ? className : null}`}>
 			<Menu as="div" className="relative inline-block text-left">
@@ -30,6 +32,7 @@ const MenuDropdown = ({ className }) => {
 							<Menu.Item>
 								{({ active }) => (
 									<button
+										onClick={()=>router.push('')}
 										className={`${
 											active ? "bg-gray-200 text-[#3e97ff]" : "text-gray-500"
 										} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -53,7 +56,7 @@ const MenuDropdown = ({ className }) => {
 								{({ active }) => (
 									<button
 										className={`${
-											active ? "bg-gray-200 text-[#3e97ff]" : "text-gray-500"
+											active ? "bg-gray-200 text-red-500" : "text-gray-500"
 										} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
 									>
 										Delete

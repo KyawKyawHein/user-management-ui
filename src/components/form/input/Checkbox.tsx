@@ -1,12 +1,14 @@
+import {useUserDetailStore} from "@/store/userDetailStore";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
 const Checkbox = ({ name, value, id, labelText, required }) => {
+	const {isActive,setIsActive} = useUserDetailStore()
 	const [checked, setChecked] = useState(false);
 	const handleCheck = (e) => {
 		const { checked } = e.target;
-		setChecked(checked);
+		setIsActive(checked? 'true':'false')
 	};
 	return (
 		<React.Fragment>

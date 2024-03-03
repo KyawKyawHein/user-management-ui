@@ -7,9 +7,23 @@ import RolesAndPermissionForm from "./component/RolesAndPermissionForm";
 import MoreInformationForm from "./component/MoreInformationForm";
 import Link from "next/link";
 
+
 const CreatePage = () => {
+  // const [user,setUser] = useState<User>({
+  //   name : "",
+  //   username : "",
+  //   email:'',
+  //   address:"",
+  //   role : 0,
+  //   birthdate: "",
+  //   gender: "",
+  //   phone:"",
+  //   facebook_link:"",
+  //   isActive:"",
+  //   photo:null
+  // })
   return (
-    <Layout>
+    <Layout title={'Create user'}>
       <div className="w-full h-full">
         <div className="my-2">
           <Link
@@ -19,8 +33,8 @@ const CreatePage = () => {
             Back
           </Link>
         </div>
-        <CreateUserForm/>
-        <RolesAndPermissionForm/>
+        <CreateUserForm />
+        {/* <RolesAndPermissionForm /> */}
         <MoreInformationForm/>
       </div>
     </Layout>

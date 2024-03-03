@@ -1,8 +1,10 @@
 import Breadcrumbs from '@/components/Breadcrumb'
 import Checkbox from '@/components/form/input/Checkbox'
 import Input from '@/components/form/input/Input'
+import {useUserDetailStore} from '@/store/userDetailStore'
 
 const CreateUserForm = () => {
+  const {name,email,setName,setEmail} = useUserDetailStore()
   return (
     <div className="bg-white rounded-xl px-8">
     <div className="pt-6">
@@ -14,29 +16,26 @@ const CreateUserForm = () => {
       </div>
     </div>
     <div className="py-4">
-      <div className="grid grid-cols-5 gap-10">
-        <div>
-          <Input labelText="Prefix:" placeholder="Mr / Mrs / Miss" />
-        </div>
-        <div className="col-span-2">
+        <div className="">
           <Input
+          value={name}
+          onChange={(e)=>setName(e.target.value)}
             labelText="First Name"
             placeholder="First Name"
             required
           />
         </div>
-        <div className="col-span-2">
-          <Input labelText="Last Name" placeholder="Last Name" />
-        </div>
-      </div>
       <div className="mt-3">
         <Input
+        value={email}
+        onChange= {(e)=>setEmail(e.target.value)}
           labelText="Email Address"
           placeholder="username@domain.xyz"
+          required
         />
       </div>
       <div className="flex items-center gap-5 mt-5 mb-7">
-        <Checkbox />
+        <Checkbox required={true}  />
         <div className="flex flex-col">
           <h1 className="text-sm text-gray-400">Is Active?</h1>
           <p className="text-xs text-gray-500">

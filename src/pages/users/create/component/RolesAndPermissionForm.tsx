@@ -1,21 +1,13 @@
 import Breadcrumbs from '@/components/Breadcrumb'
 import Input from '@/components/form/input/Input'
 import Select from '@/components/form/input/Select'
+import { useGetRoles } from '@/queries/userManagement.api'
+import {useUserDetailStore} from '@/store/userDetailStore'
 import React from 'react'
-
-const roles = [
-    { name: "Administrator" },
-    { name: "Cashier" },
-    { name: "Store Keeper" },
-  ];
-  const accessLocation = [
-      { name: "All Locations" },
-      { name: "Yangon" },
-      { name: "Mandalay" },
-  ];
-const defaultLocation = [{ name: "No Results Fount" }];
   
 const RolesAndPermissionForm = () => {
+  const {name,setName,password,setPassword} = useUserDetailStore()
+    const {data:roles,isLoading} = useGetRoles();
   return (
     <div className="bg-white rounded-xl px-8 mt-5">
           <div className="pt-6">
@@ -25,48 +17,26 @@ const RolesAndPermissionForm = () => {
           </div>
           <div className="py-4">
             <div className="mt-3">
-              <Input required labelText="User Name" placeholder="User Name" />
+              <Input required labelText="User Name" value={name} onChange={(e)=>setName(e.target.value)} placeholder="User Name" />
             </div>
             <div className="grid grid-cols-2 gap-10">
               <div>
-                <Input labelText="Password" placeholder="Password" />
+                <Input labelText="Password" value={password} onChange={(e)=>setPassword(e.target.value)} required placeholder="Password" />
                 <p className="border-t-2 border-dashed mt-2 text-sm text-gray-300">
                   Use 8 or more characters with a mix of letters, numbers &
                   symbols
                 </p>
               </div>
-              <div>
-                <Input
-                  labelText="Confirm Password"
-                  placeholder="Confirm Password"
-                />
-              </div>
             </div>
             <div className="mt-3">
-              <Select
-                data={roles}
-                labelText="Roles"
-                className="w-full"
-                required
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-10 mb-5">
-              <div>
-                <Select
-                  data={accessLocation}
-                  labelText="Roles"
-                  className="w-full"
-                  required
-                />
-              </div>
-              <div>
-                <Select
-                  data={defaultLocation}
-                  labelText="Roles"
-                  className="w-full"
-                  required
-                />
-              </div>
+             {
+              !isLoading &&  <Select
+              data={roles}
+              labelText="Roles"
+              className="w-full"
+              required
+            />
+             }
             </div>
           </div>
         </div>

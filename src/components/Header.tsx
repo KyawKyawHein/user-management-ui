@@ -14,7 +14,7 @@ import MenuDropdown from "./drawer/MenuDropdown";
 const Header = ({ open, setOpen }) => {
   return (
     <header>
-      <nav className="flex p-2 px-10">
+      <nav className="flex justify-between w-full items-center p-2 px-10">
         <div className="flex gap-2 items-center lg:w-[200px]">
           <div
             className="py-2 px-3 bg-white rounded-xl"
@@ -26,14 +26,8 @@ const Header = ({ open, setOpen }) => {
             ERPPOS
           </Link>
         </div>
-        <div className="flex justify-between items-center w-full">
-          <div className="w-[300px]">
-            <Input placeholder="Search..." />
-          </div>
+        <div className="flex justify-between items-center ">
           <div className="flex items-center">
-            <Dropdown icon={faLayerGroup}>
-              <div>Hello</div>
-            </Dropdown>
             <Badge count={3} icon={faBell} />
             <button className="w-[35px] h-[35px] flex items-center justify-center text-gray-500">
               <FontAwesomeIcon
