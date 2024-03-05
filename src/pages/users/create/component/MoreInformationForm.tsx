@@ -47,9 +47,7 @@ const MoreInformationForm = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-6 mb-3">
-        <Button className="text-white">Create User Account</Button>
-      </div>
+
     </>
   );
 };

@@ -5,8 +5,8 @@ import { useGetRoles } from '@/queries/userManagement.api'
 import {useUserDetailStore} from '@/store/userDetailStore'
 import React from 'react'
   
-const RolesAndPermissionForm = () => {
-  const {name,setName,password,setPassword} = useUserDetailStore()
+const RolesAndPermissionForm = ({password,setPassword}) => {
+  // const {name,setName,password,setPassword} = useUserDetailStore((store)=>store)
     const {data:roles,isLoading} = useGetRoles();
   return (
     <div className="bg-white rounded-xl px-8 mt-5">

@@ -1,14 +1,15 @@
-import {useUserDetailStore} from "@/store/userDetailStore";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
-const Checkbox = ({ name, value, id, labelText, required }) => {
-	const {isActive,setIsActive} = useUserDetailStore()
+const Checkbox = ({ name, value, id, labelText, required,isActive,setIsActive }) => {
+	// const {isActive,setIsActive} = useUserDetailStore()
 	const [checked, setChecked] = useState(false);
 	const handleCheck = (e) => {
-		const { checked } = e.target;
-		setIsActive(checked? 'true':'false')
+		// const { checked } = e.target;
+		// console.log(checked)
+		// setChecked(checked)
+		// setIsActive(checked? 'true':'false')
 	};
 	return (
 		<React.Fragment>
@@ -18,15 +19,16 @@ const Checkbox = ({ name, value, id, labelText, required }) => {
 				>
 					<input
 						type="checkbox"
-						className="w-full h-full appearance-none cursor-pointer focus:outline-none"
-						checked={checked}
-						value={value}
+						className="w-full h-full cursor-pointer focus:outline-none"
+						checked={true}
+						// value={isActive=='true'? true:false}
+						value={true}
 						onChange={handleCheck}
 						name={name}
 						id={id}
 					/>
 					<div
-						className={`pointer-events-none w-full h-full absolute top-0 left-0 flex items-center justify-center text-xs text-white shadow-inner ${
+						className={` w-full h-full absolute top-0 left-0 flex items-center justify-center text-xs text-white shadow-inner ${
 							checked
 								? "bg-[#3e97ff] border-[#3e97ff]"
 								: "bg-gray-100 border-gray-300"

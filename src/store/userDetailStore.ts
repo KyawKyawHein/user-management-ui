@@ -1,6 +1,5 @@
 import {create} from 'zustand'
 import zukeeper from "zukeeper"
-import { sendStatusCode } from 'next/dist/server/api-utils';
 
 interface IUserDetail {
     name : string;
@@ -33,7 +32,7 @@ interface IUserDetail {
   }
   
 
-const useUserDetailStore = create<IUserDetailStore>(zukeeper(set=>({
+const useUserDetailStore = create<IUserDetailStore>(zukeeper((set)=>({
     name : "",
     username : "",
     email:'',
@@ -62,4 +61,4 @@ const useUserDetailStore = create<IUserDetailStore>(zukeeper(set=>({
 })));
 
 window.store = useUserDetailStore;
-export {useUserDetailStore};
+export default useUserDetailStore;
