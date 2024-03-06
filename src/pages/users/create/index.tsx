@@ -1,25 +1,45 @@
 import Layout from "@/components/Layout";
 import Button from "@/components/form/button/Button";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreateUserForm from "./component/CreateUserForm";
 import RolesAndPermissionForm from "./component/RolesAndPermissionForm";
-import MoreInformationForm from "./component/MoreInformationForm";
 import Link from "next/link";
 import useUserDetailStore from "@/store/userDetailStore";
+import { useCreateUsers } from "@/queries/userManagement.api";
+import { useRouter } from "next/navigation";
 
 const CreatePage = () => {
-  const { name, setName, email, setEmail, isActive, setIsActive,password,setPassword } =
+  const {mutate:createUser,isLoading} = useCreateUsers()
+  const router = useRouter();
+  const { name, email, isActive,password,username,role,setName,setEmail,setIsActive,setPassword,setUsername,setRole } =
     useUserDetailStore();
-    const [canClick,setCanClick] = useState(false)
-    if(name.length<0 && email.length<0 && password.length<0){
-      setCanClick(true)
-    }
-    const addUser = ()=>{
-      if(!canClick) {
-        return;
+    useEffect(()=>{
+      setName('')
+      setEmail('')
+      setIsActive('')
+      setPassword('')
+      setUsername('')
+      setRole(3)
+    },[])
+    const [disable,setDisable] = useState(true)
+    useEffect(()=>{
+      if(name.length>0 && email.length>0 && password.length>=8 && username.length>0){
+        setDisable(false)
       }else{
-        console.log('ya pr dl')
+        setDisable(true)
+      }
+    },[name,email,password,username,role])
+    
+    const addUser = ()=>{
+      if(!disable) {
+        const payload = {name,username,email,password,role_id:role,isActive:isActive?'true':'false'}
+        createUser(payload,
+          {
+            onSuccess:(data)=>{
+              router.replace('/users')
+            }
+          }
+          )
       }
     }
   return (
@@ -33,18 +53,10 @@ const CreatePage = () => {
             Back
           </Link>
         </div>
-        <CreateUserForm
-          name={name}
-          setName={setName}
-          email={email}
-          setEmail={setEmail}
-          isActive={isActive}
-          setIsActive={setIsActive}
-        />
-        <RolesAndPermissionForm password={password} setPassword={setPassword} />
-        <MoreInformationForm />
+        <CreateUserForm/>
+        <RolesAndPermissionForm />
         <div className={`flex justify-center items-center mt-6 mb-3`}>
-          <Button onClick={addUser} className={`text-white ${!canClick && 'cursor-default'} `} disabled={canClick}>Create User Account</Button>
+          <Button onClick={addUser} className={`text-white`} disabled={disable}>{isLoading ? 'Loading':'Create User Account'}</Button>
         </div>
       </div>
     </Layout>

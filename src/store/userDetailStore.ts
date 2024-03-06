@@ -38,7 +38,7 @@ const useUserDetailStore = create<IUserDetailStore>(zukeeper((set)=>({
     email:'',
     password : "",
     address:"",
-    role : 1,
+    role : 3,
     birthdate: "",
     gender: "",
     phone:"",

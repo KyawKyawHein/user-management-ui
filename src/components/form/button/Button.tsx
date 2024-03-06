@@ -17,7 +17,7 @@ const Button = ({
 			className={`${
 				className ? className : null
 			} px-4 h-10 bg-[#009ef7] rounded-lg text-sm font-base ${
-				disabled ? "cursor-not-allowed hover:bg-transparent" : ""
+				disabled ? "cursor-not-allowed" : ""
 			} focus:outline-none`}
 			type={type}
 			name={name}

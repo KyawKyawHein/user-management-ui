@@ -4,8 +4,26 @@ import Checkbox from "../form/input/Checkbox";
 import Image from "next/image";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import MenuDropdown from "../drawer/MenuDropdown";
+import { useDeleteUser } from "@/queries/userManagement.api";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 
 const CustomTable = ({ tableHeader, users }) => {
+  const router = useRouter()
+  const queryClient = useQueryClient()
+  const {mutate:deleteUser}  = useDeleteUser()
+  const handleDeleteUser = (userId)=>{
+    console.log(userId)
+    deleteUser(userId,
+      {
+        onSuccess:()=>{
+          queryClient.invalidateQueries({queryKey:['get','users']})
+        }
+      })
+  }
+  const handleEditUser = (userId)=>{
+    router.push(`/users/${userId}`)
+  }
   return (
     <div className="text-sm flex flex-col gap-3 lg:w-full w-11/12 customize__scroll m-auto px-4 bg-white">
       <table className="table w-full">
@@ -39,11 +57,10 @@ const CustomTable = ({ tableHeader, users }) => {
                 >
                  <td>{user.name}</td>
                  <td>{user.email}</td>
-                 <td>{user.phone}</td>
                  <td>{user.role}</td>
-                 <td>{user.isActive == "True" ? 'Active':'Inactive'}</td>
+                 <td>{user.isActive == "true" ? 'Active':'Inactive'}</td>
                   <td className="p-3">
-                    <MenuDropdown />
+                    <MenuDropdown editUser={()=>handleEditUser(user.id)} deleteUser={()=>handleDeleteUser(user.id)} />
                   </td>
                 </tr>
               );

@@ -7,8 +7,11 @@ import {
 	faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Select = ({ data, className, labelText, required, error }) => {
-	const [selected, setSelected] = useState(data[0]);
+const Select = ({ data, className, labelText, required, error,role,setRole }) => {
+	const changeRole = (e)=>{
+		console.log(e)
+		setRole(e)
+	}
 	return (
 		<React.Fragment>
 			{labelText ? (
@@ -25,10 +28,10 @@ const Select = ({ data, className, labelText, required, error }) => {
 				</div>
 			) : null}
 			<div className={`w-[100px] ${className ? className : null}`}>
-				<Listbox value={selected} onChange={setSelected}>
+				<Listbox value={role} onChange={changeRole}>
 					<div className="relative mt-1">
 						<Listbox.Button className="relative w-full cursor-pointer text-gray-600 rounded-lg border border-gray-300 py-2 pl-3 pr-10 text-left sm:text-sm">
-							<span className="block truncate capitalize">{selected.name}</span>
+							<span className="block truncate capitalize">{data.filter(d=>d.id==role)[0].name}</span>
 							<span className="pointer-events-none absolute inset-y-0 right-0 flex flex-col justify-center items-center pr-2">
 								<FontAwesomeIcon
 									icon={faChevronUp}
@@ -55,7 +58,7 @@ const Select = ({ data, className, labelText, required, error }) => {
 												active ? "bg-gray-100 text-[#009ef7]" : "text-gray-500"
 											}`
 										}
-										value={person}
+										value={person.id}
 									>
 										{({ selected }) => (
 											<>

@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const index = () => {
+  const router = useRouter()
+  useEffect(()=>{
+    router.push('/users')
+  },[])
   return (
     <Layout title={'test'}>
       {/* <div className="flex justify-center ">

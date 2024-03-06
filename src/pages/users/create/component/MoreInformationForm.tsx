@@ -3,6 +3,7 @@ import DateInput from "@/components/form/input/DateInput";
 import Input from "@/components/form/input/Input";
 import Select from "@/components/form/input/Select";
 import Textarea from "@/components/form/input/Textarea";
+import useUserDetailStore from "@/store/userDetailStore";
 import React from "react";
 
 const gender = [
@@ -16,6 +17,7 @@ const marital = [
   { name: "Divorced" },
 ];
 const MoreInformationForm = () => {
+  // const {birthdate,setBirthdate,gender,setGender,phone,setPhone,facebook_link,setFacebookLink} = useUserDetailStore()
   return (
     <>
       <div className="bg-white rounded-xl px-8 mt-5">
@@ -28,6 +30,7 @@ const MoreInformationForm = () => {
           <div className="grid grid-cols-8 gap-10">
             <div className="col-span-2">
               <DateInput
+                
                 labelText="Date of birth"
                 placeholder="Date of birth"
               />

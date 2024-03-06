@@ -10,7 +10,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Button from "@/components/form/button/Button";
 import Link from "next/link";
 
-const tableHeader = ["Name", "Email", "Phone", "Role", "Is Active "];
+const tableHeader = ["Name", "Email", "Role", "Is Active "];
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const [searchedUser, setSearchedUser] = useState([]);
